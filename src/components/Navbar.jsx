@@ -1,6 +1,6 @@
 import React from 'react'
 import NavbarItem from './NavbarItem'
-import { HomeIcon, LibraryIcon, PlayListIcon, SearchIcon, LikedIcon } from '../assets/icons'
+import { HomeIcon, LibraryIcon, PlayListIcon, SearchIcon, LikedIcon } from '../assets/Icons'
 
 function Navbar() {
   return (

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../../context/Context';
 import { CLIENT_ID } from '../../hook/useEnv';
 import { useParams } from 'react-router-dom';
-import { PlayIcon, SaveTrack, LikedInner, TrackLike, MoreTarck } from '../../assets/icons';
+import { PlayIcon, SaveTrack, LikedInner, TrackLike, MoreTarck } from '../../assets/Icons';
 import SpotifyWebApi from 'spotify-web-api-node';
 
 function Single() {
