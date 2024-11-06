@@ -1,72 +1,64 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Context } from '../../context/Context'
-import SpotifyWebApi from 'spotify-web-api-node'
-import { CLIENT_ID } from '../../hook/useEnv'
-import SpotifyWebPlayer from 'react-spotify-web-playback'
+import React, { useContext, useEffect, useState, lazy, Suspense } from 'react';
+import { Context } from '../../context/Context';
+import SpotifyWebApi from 'spotify-web-api-node';
+import { CLIENT_ID } from '../../hook/useEnv';
+
+const MusicList = lazy(() => import("../../components/MusicLists"));
 
 function Home() {
-  const { token } = useContext(Context)
-  const [tracksList, setTracksList] = useState([])
-
-  const [play, setPlay] = useState([])
-  const [playing, setPlaying] = useState(false)
+  const { token } = useContext(Context);
+  const [trendMusicList, setTrendMusicList] = useState([]);
 
   const spotifyApi = new SpotifyWebApi({
     clientId: CLIENT_ID
-  })
+  });
 
   useEffect(() => {
     if (!token) return;
-    spotifyApi.setAccessToken(token)
-  }, [token])
+    spotifyApi.setAccessToken(token);
+  }, [token]);
 
   useEffect(() => {
     if (token) {
-      spotifyApi.searchTracks("Your Top Songs 2021").then(res => {
-        setTracksList(res.body.tracks.items.map(item => {
-          const data = {
+      spotifyApi.searchAlbums("Miyagi").then(res => {
+        setTrendMusicList(
+          res.body.albums.items.slice(0, 6).map(item => ({
             id: item.id,
-            img: item.album.images[0].url,
+            img: item.images[0].url,
             trackName: item.name,
-            artistName: item.album.artists[0].name,
+            artistName: item.artists[0].name,
             uri: item.uri
-          }
-          return data
-        }))
-      })
+          }))
+        );
+      });
     }
-  }, [token])
-
-  function handlePLay(uri) {
-    setPlay(uri);
-    setPlaying(true);
-  }
+  }, [token]);
 
   return (
-    <>
-      <div className='flex overflow-x-auto justify-between gap-5 p-5'>
-        {tracksList?.map(item => (
-          <div onClick={() => handlePLay(item.uri)} key={item.id} className='min-w-[225px] cursor-pointer p-[21px] rounded-[8px] bg-[#1c1c1c]'>
-            <img className='h-[182px] mb-[25px] rounded-[8px]' src={item.img} alt="Track img" width={"100%"} />
-            <h2 className='text-white mb-2 font-bold text-[20px]'>{item.trackName}</h2>
-            <p className='font-normal text-[18px] text-white opacity-[60%]'>{item.artistName}</p>
-          </div>
-        ))}
+    <Suspense 
+    >
+      <div className="p-5">
+        <h2 className="font-bold text-white text-[40px] mt-[20px]">Good afternoon</h2>
+        
+        <ul className="flex flex-wrap justify-between mt-[25px] mb-[50px] gap-y-4 gap-x-[30px]">
+          {trendMusicList.map(item => (
+            <li className="flex items-center gap-5 w-[48%] home-bg rounded-md overflow-hidden" key={item.id}>
+              <img className="h-[82px]" src={item.img} alt="img" width={82} height={82} />
+              <h3 className="font-bold text-[23px] text-white">{item.trackName}</h3>
+            </li>
+          ))}
+        </ul>
+
+        <div className="space-y-[50px]">
+          <MusicList artistName={"Гио Пика"} />
+          <MusicList artistName={"Shoxrux"} />
+          <MusicList artistName={"V $ X V PRiNCE"} />
+          <MusicList artistName={"50 Cent"} />
+          <MusicList artistName={"Jah Khalib"} />
+        </div>
       </div>
-      <div className='absolute bottom-0 w-full'>
-        <SpotifyWebPlayer
-          token={token}
-          uris={play ? [play] : []}
-          play={playing}
-          callback={(e) => {
-            if (e.isPlaying) {
-              setPlaying(false)
-            }
-          }}
-        />
-      </div>
-    </>
-  )
+    </Suspense>
+  );
 }
 
-export default Home
+export default Home;

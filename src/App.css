@@ -11,3 +11,18 @@
 .PlayerRSWP{
     background-color: #a3a3a3 !important;
 }
+
+.bg-yellow {
+    height: 100%;
+    background-image: url(./assets/bg-yellow.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+.home-bg{
+    background-color: rgba(225, 225, 225, 10%);
+}
