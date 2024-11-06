@@ -25,7 +25,6 @@ function Single() {
 
   useEffect(() => {
     if (token) {
-      // Get track details
       spotifyApi.getTrack(id)
         .then(res => {
           const data = {
@@ -37,7 +36,6 @@ function Single() {
           };
           setTrackInfo(data);
 
-          // Search for related tracks by the artist
           spotifyApi.searchTracks(res.body.artists[0]?.name)
             .then(res => {
               setArtistList(res.body.tracks.items.map(item => ({
@@ -59,7 +57,7 @@ function Single() {
 
   const handleTrackPlay = (item) => {
     if (currentTrack && currentTrack.id === item.id) {
-      setPlay(false);  // Stop the current track
+      setPlay(false); 
       setPlaying(false);
       setCurrentTrack(null);
     } else {
@@ -68,12 +66,12 @@ function Single() {
       ));
       setPlay(item.uri);
       setPlaying(true);
-      setCurrentTrack(item);  // Set the new current track
+      setCurrentTrack(item); 
     }
   };
 
   if (!trackInfo) {
-    return <div>Loading...</div>; // Add better loading state (spinner)
+    return <div>Loading...</div>;
   }
 
   return (
