@@ -5,7 +5,6 @@ function HomeIcon() {
         </svg>
     )
 }
-
 function SearchIcon() {
     return (
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -14,7 +13,6 @@ function SearchIcon() {
 
     )
 }
-
 function LibraryIcon() {
     return (
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,7 +22,6 @@ function LibraryIcon() {
         </svg>
     )
 }
-
 function PlayListIcon() {
     return (
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -32,7 +29,6 @@ function PlayListIcon() {
         </svg>
     )
 }
-
 function LikedIcon() {
     return (
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,7 +44,6 @@ function LikedIcon() {
 
     )
 }
-
 function LikedInner() {
     return (
         <svg id="like" width="28" height="28" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,7 +52,6 @@ function LikedInner() {
 
     )
 }
-
 function PlayIcon() {
     return (
         <svg width="23" height="25" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -66,7 +60,6 @@ function PlayIcon() {
 
     )
 }
-
 function TrackLike() {
     return (
         <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -81,7 +74,6 @@ function TrackLike() {
         </svg>
     )
 }
-
 function SaveTrack() {
     return (
         <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -98,7 +90,6 @@ function SaveTrack() {
 
     )
 }
-
 function MoreTarck(){
     return (
         <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -113,5 +104,4 @@ function MoreTarck(){
         </svg>
     )
 }
-
 export {HomeIcon,SearchIcon,LibraryIcon,PlayListIcon,LikedIcon, LikedInner, PlayIcon, TrackLike, SaveTrack, MoreTarck}

@@ -11,16 +11,14 @@ function Dashboard({ code }) {
   const { setToken, token, setPlay, playing, play } = useContext(Context);
 
   useEffect(() => {
-    if (accessToken) {
-      setToken(accessToken);
-    }
-  }, [accessToken, setToken]); 
+    setToken(accessToken)
+  }, [accessToken])
 
   return (
     <>
       <div className='flex justify-between'>
         <Navbar />
-        <div className='login-bg relative w-[60%] overflow-y-auto h-[100vh]'>
+        <div className='w-[60%] overflow-y-auto h-[100vh] login-bg relative'>
           <CustomRoutes />
         </div>
         <Activity />
@@ -29,10 +27,10 @@ function Dashboard({ code }) {
         <SpotifyWebPlayer
           token={token}
           uris={play ? [play] : []}
-          play={playing} 
+          play={playing}
           callback={(e) => {
             if (e.isPlaying) {
-              setPlay(false); 
+              setPlay(false)
             }
           }}
         />
