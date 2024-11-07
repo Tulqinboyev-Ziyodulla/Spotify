@@ -2,7 +2,6 @@ import React, { lazy, Suspense, useContext, useEffect, useState } from 'react';
 import { Context } from '../../context/Context';
 import SpotifyWebApi from 'spotify-web-api-node';
 import { CLIENT_ID } from '../../hook/useEnv';
-import Forward from "../../assets/forward.svg"
 
 const MusicList = lazy( () => new Promise(resolve => {
   return setTimeout(() => {
